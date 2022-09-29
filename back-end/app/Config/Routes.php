@@ -37,11 +37,19 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+//Routers Database Table Kost
 $routes->get('kost', 'KostController::index');
 $routes->get('kost/(:segment)', 'KostController::show/$1');
 $routes->post('kost', 'KostController::create');
 $routes->post('kost/update/(:segment)', 'KostController::update/$1');
 $routes->delete('kost/(:segment)', 'KostController::delete/$1');
+
+//Routers Database Table Pemilik
+$routes->get('pemilik', 'PemilikController::index');
+$routes->get('pemilik/(:segment)', 'PemilikController::show/$1');
+$routes->post('pemilik', 'PemilikController::create');
+$routes->post('pemilik/update/(:segment)', 'PemilikController::update/$1');
+$routes->delete('pemilik/(:segment)', 'PemilikController::delete/$1');
 
 
 /*

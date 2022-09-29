@@ -4,9 +4,9 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\KostModel;
+use App\Models\PemilikModel;
 
-class KostController extends ResourceController
+class PemilikController extends ResourceController
 {
     /**
      * Return an array of resource objects, themselves in array format
@@ -16,8 +16,8 @@ class KostController extends ResourceController
     use ResponseTrait;
     public function index()
     {
-        $model = new KostModel();
-        $data['kost'] = $model->orderBy('id_kost', 'ASC')->findAll();
+        $model = new PemilikModel();
+        $data['pemilik'] = $model->orderBy('id_pemilik', 'ASC')->findAll();
         return $this->respond($data);
     }
 
@@ -28,12 +28,12 @@ class KostController extends ResourceController
      */
     public function show($id = null)
     {
-        $model = new KostModel();
-        $data = $model->where('id_kost', '$id')->first();
+        $model = new PemilikModel();
+        $data = $model->where('id_pemilik', '$id')->first();
         if ($data) {
             return $this->respond($data);
         } else {
-            return $this->failNotFound('No Kost found ');
+            return $this->failNotFound('No pemilik found ');
         }
     }
 
@@ -54,23 +54,23 @@ class KostController extends ResourceController
      */
     public function create()
     {
-        $model = new KostModel();
+        $model = new PemilikModel();
         $data = [
-            'id_pemilik' => $this->request->getVar('id_pemilik'),
-            'nama_kost' => $this->request->getVar('nama_kost'),
-            'alamat_kost' => $this->request->getVar('alamat_kost'),
-            'longitude' => $this->request->getVar('longitude'),
-            'latitude' => $this->request->getVar('latitude'),
-            'jenis' => $this->request->getVar('jenis'),
-            'fasilitas' => $this->request->getVar('fasilitas'),
-            'foto' => $this->request->getVar('foto')
+            'nama_pemilik' => $this->request->getVar('nama_pemilik'),
+            'username' => $this->request->getVar('username'),
+            'email' => $this->request->getVar('email'),
+            'no_telp' => $this->request->getVar('no_telp'),
+            'no_wa' => $this->request->getVar('no_wa'),
+            'alamat_ktp' => $this->request->getVar('alamat_ktp'),
+            'password' => $this->request->getVar('password'),
+            'salt' => $this->request->getVar('salt'),
         ];
         $model->insert($data);
         $response = [
             'status' => 201,
             'error' => null,
             'messages' => [
-                'success' => 'kost created successfully'
+                'success' => 'pemilik created successfully'
             ]
         ];
         return $this->respondCreated($response);
@@ -93,20 +93,20 @@ class KostController extends ResourceController
      */
     public function update($id = null)
     {
-        $model = new KostModel();
+        $model = new PemilikModel();
         if ($id === null) {
             $id = $this->request->getvar();
         }
 
         $data = [
-            'id_pemilik' => $this->request->getVar('id_pemilik'),
-            'nama_kost' => $this->request->getVar('nama_kost'),
-            'alamat_kost' => $this->request->getVar('alamat_kost'),
-            'longitude' => $this->request->getVar('longitude'),
-            'latitude' => $this->request->getVar('latitude'),
-            'jenis' => $this->request->getVar('jenis'),
-            'fasilitas' => $this->request->getVar('fasilitas'),
-            'foto' => $this->request->getVar('foto'),
+            'nama_pemilik' => $this->request->getVar('nama_pemilik'),
+            'username' => $this->request->getVar('username'),
+            'email' => $this->request->getVar('email'),
+            'no_telp' => $this->request->getVar('no_telp'),
+            'no_wa' => $this->request->getVar('no_wa'),
+            'alamat_ktp' => $this->request->getVar('alamat_ktp'),
+            'password' => $this->request->getVar('password'),
+            'salt' => $this->request->getVar('salt'),
         ];
         $model->update($id, $data);
         $response = [
@@ -126,8 +126,8 @@ class KostController extends ResourceController
      */
     public function delete($id = null)
     {
-        $model = new KostModel();
-        $data = $model->where('id_kost', $id)->delete($id);
+        $model = new PemilikModel();
+        $data = $model->where('id_pemilik', $id)->delete($id);
         if ($data) {
             $model->delete($id);
             $response = [
