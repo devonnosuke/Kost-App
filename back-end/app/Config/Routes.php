@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Models\KostModel;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -35,7 +37,12 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('kost', 'KostController::index');
+$routes->get('kost/(:segment)', 'KostController::show/$1');
+$routes->post('kost', 'KostController::create');
+$routes->post('kost/update/(:segment)', 'KostController::update/$1');
+$routes->delete('kost/(:segment)', 'KostController::delete/$1');
+
 
 /*
  * --------------------------------------------------------------------
