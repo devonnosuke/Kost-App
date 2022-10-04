@@ -51,6 +51,13 @@ $routes->post('pemilik', 'PemilikController::create');
 $routes->post('pemilik/update/(:segment)', 'PemilikController::update/$1');
 $routes->delete('pemilik/(:segment)', 'PemilikController::delete/$1');
 
+//Routers Database Table User
+$routes->get('user', 'UserController::index');
+$routes->get('user/(:segment)', 'UserController::show/$1');
+$routes->post('user', 'UserController::create');
+$routes->post('user/update/(:segment)', 'UserController::update/$1');
+$routes->delete('user/(:segment)', 'UserController::delete/$1');
+
 
 /*
  * --------------------------------------------------------------------
