@@ -51,12 +51,27 @@ $routes->post('pemilik', 'PemilikController::create');
 $routes->post('pemilik/update/(:segment)', 'PemilikController::update/$1');
 $routes->delete('pemilik/(:segment)', 'PemilikController::delete/$1');
 
+
 //Routers Database Table User
 $routes->get('user', 'UserController::index');
 $routes->get('user/(:segment)', 'UserController::show/$1');
 $routes->post('user', 'UserController::create');
 $routes->post('user/update/(:segment)', 'UserController::update/$1');
 $routes->delete('user/(:segment)', 'UserController::delete/$1');
+
+// Routes database Table Like
+$routes->get('like', 'LikeController::index');
+$routes->get('like/(:segment)', 'LikeController::show/$1');
+$routes->post('like', 'LikeController::create');
+$routes->post('like/update/(:segment)', 'LikeController::update/$1');
+$routes->delete('like/(:segment)', 'LikeController::delete/$1');
+
+// Routes database Table Kost_tersimpan
+$routes->get('kost_tersimpan', 'KostTersimpanController::index');
+$routes->get('kost_tersimpan/(:segment)', 'KostTersimpanController::show/$1');
+$routes->post('kost_tersimpan', 'KostTersimpanController::create');
+$routes->post('kost_tersimpan/update/(:segment)', 'KostTersimpanController::update/$1');
+$routes->delete('kost_tersimpan/(:segment)', 'KostTersimpanController::delete/$1');
 
 
 /*
