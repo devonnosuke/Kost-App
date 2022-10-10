@@ -55,7 +55,7 @@ class Kost extends Migration
             ],
             'cretaed_at' => [
                 'type'               => 'DATETIME',
-                'null'               => 'true',
+                'null'               => true,
 
             ],
             'updated_at' => [
