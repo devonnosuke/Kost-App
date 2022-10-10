@@ -25,6 +25,15 @@ class KostTersimpan extends Migration
                 'constraint'     => 5,
 
             ],
+            'created_at' => [
+                'type'               => 'DATETIME',
+                'null'               => 'true',
+
+            ],
+            'updated_at' => [
+                'type'   => 'DATETIME',
+                'null'   => true,
+            ],
 
         ]);
         $this->forge->addKey('id_kost_tersimpan', true);
