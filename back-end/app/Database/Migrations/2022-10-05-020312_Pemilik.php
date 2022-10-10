@@ -53,14 +53,14 @@ class Pemilik extends Migration
                 'constraint'     => 225,
 
             ],
-            'created_at' => [
-                'type'               => 'DATETIME',
-                'null'               => 'true',
-
+            'created_at'  => [
+                'type'           => 'DATETIME',
+                'null'           => true,
             ],
-            'updated_at' => [
-                'type'   => 'DATETIME',
-                'null'   => true,
+            'update_at'  => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+
             ],
 
         ]);

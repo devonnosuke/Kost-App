@@ -35,6 +35,7 @@ class KostTersimpan extends Migration
                 'null'   => true,
             ],
 
+
         ]);
         $this->forge->addKey('id_kost_tersimpan', true);
         $this->forge->createTable('kost_tersimpan');
