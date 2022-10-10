@@ -33,7 +33,6 @@ class Like extends Migration
                 'type'           => 'DATETIME',
                 'null'           => true,
             ],
-
         ]);
         $this->forge->addKey('id_like', true);
         $this->forge->createTable('like');

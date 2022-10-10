@@ -60,6 +60,7 @@ class Pemilik extends Migration
             'update_at'  => [
                 'type'           => 'DATETIME',
                 'null'           => true,
+
             ],
 
         ]);
