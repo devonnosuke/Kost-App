@@ -53,6 +53,15 @@ class Pemilik extends Migration
                 'constraint'     => 225,
 
             ],
+            'created_at'  => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+            ],
+            'update_at'  => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+
+            ],
 
         ]);
         $this->forge->addKey('id_pemilik', true);
