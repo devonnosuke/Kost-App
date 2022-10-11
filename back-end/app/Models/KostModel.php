@@ -13,4 +13,14 @@ class KostModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $useTimestamps = true;
+
+
+    public function getKost()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*');
+        $builder->join('pemilik', "pemilik.id_pemilik = $this->table.id_pemilik");
+        return $builder->get()->getResult();
+    }
 }

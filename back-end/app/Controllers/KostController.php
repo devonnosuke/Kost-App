@@ -17,7 +17,7 @@ class KostController extends ResourceController
     public function index()
     {
         $model = new KostModel();
-        $data['kost'] = $model->orderBy('id_kost', 'ASC')->findAll();
+        $data['kost'] = $model->getKost();
         return $this->respond($data);
     }
 
