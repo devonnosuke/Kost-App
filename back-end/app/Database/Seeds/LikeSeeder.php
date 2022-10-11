@@ -10,23 +10,23 @@ class LikeSeeder extends Seeder
     {
         $data = [
             [
-                'id_like' => 323,
+                'id_kost' => 323,
                 'id_user'    => 32,
             ],
             [
-                'id_like' => 994,
+                'id_kost' => 994,
                 'id_user'    => 53,
             ],
             [
-                'id_like' => 833,
+                'id_kost' => 833,
                 'id_user'    => 22,
             ],
             [
-                'id_like' => 235,
+                'id_kost' => 235,
                 'id_user'    => 48,
             ],
             [
-                'id_like' => 322,
+                'id_kost' => 322,
                 'id_user'    => 66,
             ],
         ];

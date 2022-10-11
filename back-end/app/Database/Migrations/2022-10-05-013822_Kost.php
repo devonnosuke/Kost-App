@@ -53,7 +53,7 @@ class Kost extends Migration
                 'constraint'     => 225,
 
             ],
-            'cretaed_at' => [
+            'created_at' => [
                 'type'               => 'DATETIME',
                 'null'               => true,
 
