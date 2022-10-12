@@ -23,11 +23,11 @@ class LikeSeeder extends Seeder
             ],
             [
                 'id_kost' => 4,
-                'id_user'    => 5,
+                'id_user'    => 4,
             ],
             [
                 'id_kost' => 5,
-                'id_user'    => 6,
+                'id_user'    => 5,
             ],
         ];
 
