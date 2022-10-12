@@ -17,7 +17,7 @@ class KostTersimpanController extends ResourceController
     public function index()
     {
         $model = new KostTersimpanModel();
-        $data['kost_tersimpan'] = $model->orderBy('id_kost_tersimpan', 'ASC')->findAll();
+        $data['kost_tersimpan'] = $model->getKostTersimpan();
         return $this->respond($data);
     }
 
