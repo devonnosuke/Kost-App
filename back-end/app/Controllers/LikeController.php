@@ -17,7 +17,7 @@ class LikeController extends ResourceController
     public function index()
     {
         $model = new LikeModel();
-        $data['like'] = $model->orderBy('id_like', 'ASC')->findAll();
+        $data['like'] = $model->getLike();
         return $this->respond($data);
     }
 
