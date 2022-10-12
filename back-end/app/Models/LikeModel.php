@@ -14,4 +14,14 @@ class LikeModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $useTimestamps = true;
+
+    public function getLike()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*');
+        $builder->join('kost', "kost.id_kost = $this->table.id_kost");
+        $builder->join('user', "user.id_user = $this->table.id_user");
+        return $builder->get()->getResult();
+    }
 }
