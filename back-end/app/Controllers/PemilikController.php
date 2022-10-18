@@ -17,7 +17,7 @@ class PemilikController extends ResourceController
     public function index()
     {
         $model = new PemilikModel();
-        $data['pemilik'] = $model->orderBy('id_pemilik', 'ASC')->findAll();
+        $data['pemilik'] = $model->orderBy('id_pemilik', 'ASC')->getPemilik();
         return $this->respond($data);
     }
 

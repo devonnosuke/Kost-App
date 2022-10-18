@@ -13,4 +13,12 @@ class UserModel extends Model
     protected $updatedField  = 'updated_at';
     protected $createdField  = 'created_at';
     protected $useTimestamps = true;
+
+    public function getUser()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id_user, nama_user, username, email, password, salt');
+        return $builder->get()->getResult();
+    }
 }

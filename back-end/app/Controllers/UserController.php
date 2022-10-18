@@ -17,7 +17,7 @@ class UserController extends ResourceController
     public function index()
     {
         $model = new UserModel();
-        $data['user'] = $model->orderBy('id_user', 'ASC')->findAll();
+        $data['user'] = $model->orderBy('id_user', 'ASC')->getUser();
         return $this->respond($data);
     }
 

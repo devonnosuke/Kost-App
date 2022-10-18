@@ -13,4 +13,12 @@ class PemilikModel extends Model
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
     protected $useTimestamps    = true;
+
+    public function getPemilik()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id_pemilik, nama_pemilik, username, email, no_telp, no_wa, alamat_ktp, password, salt');
+        return $builder->get()->getResult();
+    }
 }
