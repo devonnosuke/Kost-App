@@ -19,7 +19,7 @@ class LikeModel extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table($this->table);
-        $builder->select('*');
+        $builder->select('id_like, like.id_kost, like.id_user, nama_kost, alamat_kost, jenis, foto');
         $builder->join('kost', "kost.id_kost = $this->table.id_kost");
         $builder->join('user', "user.id_user = $this->table.id_user");
         return $builder->get()->getResult();
