@@ -17,7 +17,13 @@ class KostController extends ResourceController
     public function index()
     {
         $model = new KostModel();
-        $data['kost'] = $model->getKost();
+        $cari = $this->request->getVar('cari');
+        if ($cari) {
+            $data['pencarian'] = $cari;
+            $data['kost'] = $model->cariKost($cari);
+        } else {
+            $data['kost'] = $model->getKost();
+        }
         return $this->respond($data);
     }
 

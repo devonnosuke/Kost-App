@@ -23,4 +23,15 @@ class KostModel extends Model
         $builder->join('pemilik', "pemilik.id_pemilik = $this->table.id_pemilik");
         return $builder->get()->getResult();
     }
+
+    public function cariKost($cari)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id_kost, kost.id_pemilik, nama_kost, foto, alamat_kost, jenis, fasilitas, longitude, latitude, nama_pemilik, email, no_telp, no_wa');
+        $builder->join('pemilik', "pemilik.id_pemilik = $this->table.id_pemilik");
+        $builder->like('nama_kost', $cari);
+        $builder->orLike('alamat_kost', $cari);
+        return $builder->get()->getResult();
+    }
 }
