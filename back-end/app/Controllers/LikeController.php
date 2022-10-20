@@ -24,6 +24,14 @@ class LikeController extends ResourceController
         } else {
             $data['like'] = $model->getLike();
         }
+
+        $id_user = $this->request->getVar('id_user');
+        if ($id_user) {
+            $data['like'] = $model->getKostLike($id_user);
+            $data['id_user'] = $id_user;
+        } else {
+            $data['like'] = $model->getLike();
+        }
         return $this->respond($data);
     }
 

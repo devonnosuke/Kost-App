@@ -35,4 +35,15 @@ class LikeModel extends Model
         $builder->where('like.id_kost', $id_kost);
         return $builder->get()->getResult();
     }
+
+    public function getByUser($id_user)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id_like, like.id_kost, like.id_user, nama_kost, alamat_kost, jenis, foto');
+        $builder->join('kost', "kost.id_kost = $this->table.id_kost");
+        $builder->join('user', "user.id_user = $this->table.id_user");
+        $builder->where('like.id_user', $id_user);
+        return $builder->get()->getResult();
+    }
 }
