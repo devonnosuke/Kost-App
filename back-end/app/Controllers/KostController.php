@@ -24,6 +24,14 @@ class KostController extends ResourceController
         } else {
             $data['kost'] = $model->getKost();
         }
+
+        $jenis = $this->request->getVar('jenis');
+        if ($jenis) {
+            $data['kost'] = $model->getKostByJenis($jenis);
+            $data['jenis'] = $jenis;
+        } else {
+            $data['kost'] = $model->getKost();
+        }
         return $this->respond($data);
     }
 

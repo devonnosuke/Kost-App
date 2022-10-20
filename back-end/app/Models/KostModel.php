@@ -34,4 +34,14 @@ class KostModel extends Model
         $builder->orLike('alamat_kost', $cari);
         return $builder->get()->getResult();
     }
+
+    public function getKostByJenis($jenis)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id_kost, kost.id_pemilik, nama_kost, foto, alamat_kost, jenis, fasilitas, longitude, latitude, nama_pemilik, email, no_telp, no_wa');
+        $builder->join('pemilik', "pemilik.id_pemilik = $this->table.id_pemilik");
+        $builder->where('jenis', $jenis);
+        return $builder->get()->getResult();
+    }
 }
