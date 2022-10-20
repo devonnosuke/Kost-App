@@ -30,6 +30,10 @@ class Kost extends Migration
                 'constraint'     => 100,
 
             ],
+            'kecamatan' => [
+                'type'          => 'VARCHAR',
+                'constraint'     => 100,
+            ],
             'longitude' => [
                 'type'           => 'FLOAT',
 
