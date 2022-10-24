@@ -8,30 +8,17 @@ class KostTersimpanSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
-            [
-                'id_kost'           => 1,
-                'id_user'           => 1,
-            ],
-            [
-                'id_kost'           => 2,
-                'id_user'           => 2,
-            ],
-            [
-                'id_kost'           => 3,
-                'id_user'           => 3,
-            ],
-            [
-                'id_kost'           => 4,
-                'id_user'           => 4,
-            ],
-            [
-                'id_kost'           => 5,
-                'id_user'           => 5,
-            ],
-        ];
+        for ($i = 0; $i  < 10; $i++) {
+            helper('getid');
+            $data =
+                [
+                    'id_kost'           => getRandId('kost', 'id_kost'),
+                    'id_user'           => getRandId('user', 'id_user')
+                ];
 
-        // using query builder
-        $this->db->table('kost_tersimpan')->insertBatch($data);
+
+            // using query builder
+            $this->db->table('kost_tersimpan')->insert($data);
+        }
     }
 }
