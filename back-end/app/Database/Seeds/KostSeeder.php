@@ -2,81 +2,43 @@
 
 namespace App\Database\Seeds;
 
+use App\Models\KostModel;
+use CodeIgniter\Test\Fabricator;
 use CodeIgniter\Database\Seeder;
+use CodeIgniter\Test\Interfaces\FabricatorModel;
 
 class KostSeeder extends Seeder
 {
     public function run()
     {
-        $data = [
-            [
-                'id_pemilik' => '1',
-                'nama_kost'    => 'kost indah',
-                'alamat_kost' => 'jln.dewisartika',
-                'kecamatan'   => 'palu timur',
-                'longitude' => '243565',
-                'latitude' => '349735',
-                'jenis' => 'kost perempuan',
-                'fasilitas' => 'ada ac kasur dan lemari',
-                'foto' => 'kost.jpg',
+        for ($i = 0; $i  < 10; $i++) {
+            # code...
+            // menggunakan getid_helper
+            helper('getid');
 
-            ],
-            [
-                'id_pemilik' => '2',
-                'nama_kost'    => 'kost permata',
-                'alamat_kost' => 'jln.setiabudi',
-                'kecamatan' => 'palu barat',
-                'longitude' => '232334',
-                'latitude' => '97563',
-                'jenis' => 'kost campuran',
-                'fasilitas' => 'tidak ada hanya berisi kost kosong ',
-                'foto' => 'kost_permata.jpg',
+            // Melakukan setting format data yang akan dibuat
+            $formatters = [
+                // 'id_pemilik'  => '1',
+                'nama_kost'  => 'company',
+                'alamat_kost'  => 'address',
+                'kecamatan' => 'state',
+                'longitude' => 'longitude',
+                'latitude' => 'latitude',
+                'jenis' => 'realText',
+                'fasilitas' => 'realText',
+            ];
 
-            ],
+            // Meng-inisialiasikan Faker baru
+            $fabricator = new Fabricator(KostModel::class, $formatters, 'id_ID');
 
-            [
-                'id_pemilik' => '3',
-                'nama_kost'    => 'kost invinite',
-                'alamat_kost' => 'jln.kalukubula',
-                'kecamatan' => 'palu selatan',
-                'longitude' => '97845600',
-                'latitude' => '2835690',
-                'jenis' => 'kost campuran',
-                'fasilitas' => 'kos kosong',
-                'foto' => 'kost_api.jpg',
+            // Mengenerate data Faker
+            $data = $fabricator->make();
 
-            ],
+            // menambah Id_pemilik berdasaran id yang tersedia di pemilik
+            $data['id_pemilik'] = getRandId('pemilik', 'id_pemilik');
 
-            [
-                'id_pemilik' => '4',
-                'nama_kost'    => 'kost destik',
-                'alamat_kost' => 'jln.sParman',
-                'kecamatan' => 'palu utara',
-                'longitude' => '97845600',
-                'latitude' => '2835690',
-                'jenis' => 'kost campuran',
-                'fasilitas' => 'kos kosong',
-                'foto' => 'kost_api.jpg',
-
-            ],
-
-            [
-                'id_pemilik' => '5',
-                'nama_kost'    => 'kost destik',
-                'alamat_kost' => 'jln.sParman',
-                'kecamatan' => 'palsel',
-                'longitude' => '97845600',
-                'latitude' => '2835690',
-                'jenis' => 'kost campuran',
-                'fasilitas' => 'kos kosong',
-                'foto' => 'kost_api.jpg',
-
-            ],
-        ];
-
-
-
-        // Using Query Builder
-        $this->db->table('kost')->insertBatch($data);
+            // menambah data yang baru dibuat ke database
+            $this->db->table('kost')->insert($data);
+        }
     }
 }
