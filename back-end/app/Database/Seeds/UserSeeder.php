@@ -2,7 +2,10 @@
 
 namespace App\Database\Seeds;
 
+use App\Models\UserModel;
+use CodeIgniter\Test\Fabricator;
 use CodeIgniter\Database\Seeder;
+
 
 class UserSeeder extends Seeder
 {
@@ -10,45 +13,29 @@ class UserSeeder extends Seeder
 
     public function run()
     {
-        $data = [
-            [
-                'nama_user' => 'mauliani',
-                'username'  => 'nyyanii',
-                'email'     => 'mauliani020@gmail.com',
-                'password'  => 'yanicantik',
-                'salt'      => 'hhhh',
-            ],
-            [
-                'nama_user' => 'mark lee',
-                'username'  => 'markie',
-                'email'     => 'mark@gmail.com',
-                'password'  => 'markganteng',
-                'salt'      => 'hhhh',
-            ],
-            [
-                'nama_user' => 'auliyasari',
-                'username'  => 'uul',
-                'email'     => 'auliyasari@gmail.com',
-                'password'  => 'uulcantik',
-                'salt'      => 'hhhh',
-            ],
-            [
-                'nama_user' => 'mohikhwanaldi',
-                'username'  => 'aldi',
-                'email'     => 'aldi@gmail.com',
-                'password'  => 'aldianjay',
-                'salt'      => 'hhhh',
-            ],
-            [
-                'nama_user' => 'jisungpark',
-                'username'  => 'jisung',
-                'email'     => 'jisung@gmail.com',
-                'password'  => 'jisungkiyowo',
-                'salt'      => 'hhhh',
-            ],
-        ];
+        for ($i = 0; $i  < 10; $i++) {
+            # code...
+            // menggunakan getid_helper
+            helper('getid');
 
-        // using query builder
-        $this->db->table('user')->insertBatch($data);
+            // Melakukan setting format data yang akan dibuat
+            $formatters = [
+                // 'id_pemilik'  => '1',
+                'nama_user'  => 'name',
+                'username'  => 'userName',
+                'email' => 'email',
+                'password' => 'password',
+                'salt' => 'sha256',
+            ];
+
+            // Meng-inisialiasikan Faker baru
+            $fabricator = new Fabricator(UserModel::class, $formatters, 'id_ID');
+
+            // Mengenerate data Faker
+            $data = $fabricator->make();
+
+            // menambah data yang baru dibuat ke database
+            $this->db->table('user')->insert($data);
+        }
     }
 }
